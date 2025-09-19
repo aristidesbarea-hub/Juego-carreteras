@@ -5861,14 +5861,6 @@
       ]
     },
     {
-      "nombre": "Carretera 24",
-      "segmentos": [
-        {
-          "puntos": []
-        }
-      ]
-    },
-    {
       "nombre": "L512",
       "segmentos": [
         {
@@ -7469,14 +7461,6 @@
               227.30604553222656
             ]
           ]
-        }
-      ]
-    },
-    {
-      "nombre": "C53",
-      "segmentos": [
-        {
-          "puntos": []
         }
       ]
     },
