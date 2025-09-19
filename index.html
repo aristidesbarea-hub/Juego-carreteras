@@ -2,14 +2,24 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Juego de Carreteras</title>
+<title>Juego de Carreteras Mejorado</title>
 <style>
   body { display: flex; height: 100vh; margin: 0; font-family: Arial, sans-serif; }
   #sidebar { width: 250px; background: #f9f9f9; padding: 10px; box-sizing: border-box; border-right: 1px solid #ccc; overflow-y: auto; }
   #mapContainer { flex: 1; display: flex; justify-content: center; align-items: center; background: #ddd; }
   svg { border: 1px solid #333; max-width: 95%; max-height: 95%; background: #f2f2f2; }
-  .road { stroke-width: 3; fill: none; stroke: red; }
+  
+  /* Capas SVG */
+  .road { stroke-width: 3; fill: none; stroke: black; }
+  .road.highlight { stroke: red; }
   .road.correct { stroke: green; }
+  
+  .comarcaPath { stroke:black; stroke-width:1; fill:lightgray; }
+  .city { stroke:black; stroke-width:1; }
+  .capital { fill:darkgreen; }
+  .normal { fill:dodgerblue; }
+  .cityText { font-size: 12px; pointer-events: none; }
+
   .btnRoad { display: block; width: 100%; padding: 6px; margin: 2px 0; border: 1px solid #ccc; background: #fff; cursor: pointer; text-align: left; }
   .btnRoad:hover { background: #eee; }
   .btnRoad.correct { background: #9f9; }
@@ -27,101 +37,164 @@
 
 <div id="mapContainer">
   <svg id="map" viewBox="0 0 1000 800">
-    <image href="MapaBase.png" x="0" y="0" width="1000" height="800"/>
+    <g id="comarcasLayer"></g>
     <g id="roadsLayer"></g>
+    <g id="citiesLayer"></g>
   </svg>
 </div>
 
 <script>
+let comarcas = [];
+let cities = [];
 let roads = [];
 let targetRoad = null;
 let answeredCorrect = new Set();
 
+// Capas SVG
+const comarcasLayer = document.getElementById("comarcasLayer");
 const roadsLayer = document.getElementById("roadsLayer");
+const citiesLayer = document.getElementById("citiesLayer");
 const buttonsContainer = document.getElementById("buttonsContainer");
 const result = document.getElementById("result");
 
-// --- CARGAR JSON AUTOMÁTICAMENTE ---
-fetch("carreteras.json")
-  .then(res => res.json())
-  .then(content => {
-    // Ordenar alfabéticamente
-    roads = (content.carreteras || []).sort((a, b) =>
-      a.nombre.localeCompare(b.nombre, "es", { sensitivity: "base" })
-    );
-    createButtons();
-    startGame();
-  })
-  .catch(err => {
-    result.textContent = "Error cargando carreteras.json: " + err;
-  });
+// ------------------ CARGAR DATOS ------------------
+async function loadJSON(url){
+  const resp = await fetch(url);
+  return await resp.json();
+}
 
-// --- CREAR BOTONES ---
+Promise.all([
+  loadJSON("malla_comarcas.json"), // Comarcas
+  loadJSON("ciudades.json"),       // Ciudades
+  loadJSON("carreteras.json")      // Carreteras
+]).then(([comarcasData, citiesData, roadsData])=>{
+  comarcas = (comarcasData.comarcas||[]).map(c => ({ ...c, status:"pending" }));
+  cities = citiesData.ciudades || [];
+  roads = (roadsData.carreteras||[]).sort((a,b)=>a.nombre.localeCompare(b.nombre,"es",{sensitivity:"base"}));
+  drawBackground();
+  createButtons();
+  startGame();
+}).catch(err=>{
+  result.textContent = "Error cargando datos: "+err;
+});
+
+// ------------------ DIBUJAR FONDO ------------------
+function drawBackground(){
+  drawComarcas();
+  drawCities();
+}
+
+// Dibujar comarcas
+function drawComarcas(){
+  comarcasLayer.innerHTML = "";
+  comarcas.forEach(c=>{
+    let d = "";
+    c.polygons.forEach(poly=>{
+      if(!poly.points || poly.points.length<3) return;
+      d += "M "+poly.points.map(p=>`${p.x} ${p.y}`).join(" L ")+" Z ";
+    });
+    const path = document.createElementNS("http://www.w3.org/2000/svg","path");
+    path.setAttribute("d", d);
+    path.setAttribute("class","comarcaPath");
+    comarcasLayer.appendChild(path);
+  });
+}
+
+// Dibujar ciudades
+function drawCities(){
+  citiesLayer.innerHTML = "";
+  cities.forEach(city=>{
+    const c = document.createElementNS("http://www.w3.org/2000/svg","circle");
+    c.setAttribute("cx", city.x);
+    c.setAttribute("cy", city.y);
+    c.setAttribute("r", 5);
+    c.setAttribute("class","city "+city.tipo);
+    citiesLayer.appendChild(c);
+
+    const text = document.createElementNS("http://www.w3.org/2000/svg","text");
+    text.setAttribute("x", city.x + 7);
+    text.setAttribute("y", city.y - 3);
+    text.setAttribute("class","cityText");
+    text.textContent = city.nombre;
+    citiesLayer.appendChild(text);
+  });
+}
+
+// ------------------ BOTONES ------------------
 function createButtons(){
   buttonsContainer.innerHTML = "";
-  roads.forEach(r => {
+  roads.forEach(r=>{
     const btn = document.createElement("button");
     btn.textContent = r.nombre;
     btn.className = "btnRoad";
-    btn.onclick = () => checkAnswer(r, btn);
+    btn.onclick = ()=>checkAnswer(r, btn);
     buttonsContainer.appendChild(btn);
   });
 }
 
-// --- INICIAR JUEGO ---
+// ------------------ JUEGO ------------------
 function startGame(){
-  if (roads.length === 0) return;
-  // Elegir carretera que aún no esté acertada
-  const candidates = roads.filter(r => !answeredCorrect.has(r.nombre));
-  if (candidates.length === 0){
-    result.textContent = "🎉 ¡Has acertado todas las carreteras!";
+  if(roads.length===0) return;
+  const candidates = roads.filter(r=>!answeredCorrect.has(r.nombre));
+  if(candidates.length===0){
+    result.textContent="🎉 ¡Has acertado todas las carreteras!";
     return;
   }
-  targetRoad = candidates[Math.floor(Math.random() * candidates.length)];
-  drawRoad(targetRoad, "road"); // dibujar en rojo
-  result.textContent = "Encuentra la carretera resaltada en rojo.";
+  targetRoad = candidates[Math.floor(Math.random()*candidates.length)];
+  drawRoads();
+  result.textContent="Encuentra la carretera resaltada en rojo.";
 }
 
-// --- DIBUJAR CARRETERA ---
-function drawRoad(road, cssClass){
+// Dibujar carreteras
+function drawRoads(){
   roadsLayer.innerHTML = "";
-  // Dibujar todas las que ya están correctas en verde
-  roads.forEach(r => {
-    if (answeredCorrect.has(r.nombre)){
-      r.segmentos.forEach(seg => {
-        const poly=document.createElementNS("http://www.w3.org/2000/svg","polyline");
+  // Carreteras ya acertadas → verde
+  roads.forEach(r=>{
+    if(answeredCorrect.has(r.nombre)){
+      r.segmentos.forEach(seg=>{
+        const poly = document.createElementNS("http://www.w3.org/2000/svg","polyline");
         poly.setAttribute("points", seg.puntos.map(p=>p.join(",")).join(" "));
         poly.setAttribute("class","road correct");
         roadsLayer.appendChild(poly);
       });
     }
   });
-  // Dibujar la carretera actual (si no está ya acertada)
-  if (!answeredCorrect.has(road.nombre)){
-    road.segmentos.forEach(seg=>{
-      const poly=document.createElementNS("http://www.w3.org/2000/svg","polyline");
+  // Carretera actual → roja
+  if(targetRoad && !answeredCorrect.has(targetRoad.nombre)){
+    targetRoad.segmentos.forEach(seg=>{
+      const poly = document.createElementNS("http://www.w3.org/2000/svg","polyline");
       poly.setAttribute("points", seg.puntos.map(p=>p.join(",")).join(" "));
-      poly.setAttribute("class",cssClass);
+      poly.setAttribute("class","road highlight");
       roadsLayer.appendChild(poly);
     });
   }
+  // Otras carreteras → negras
+  roads.forEach(r=>{
+    if(r!==targetRoad && !answeredCorrect.has(r.nombre)){
+      r.segmentos.forEach(seg=>{
+        const poly = document.createElementNS("http://www.w3.org/2000/svg","polyline");
+        poly.setAttribute("points", seg.puntos.map(p=>p.join(",")).join(" "));
+        poly.setAttribute("class","road");
+        roadsLayer.appendChild(poly);
+      });
+    }
+  });
 }
 
-// --- COMPROBAR RESPUESTA ---
+// Comprobar respuesta
 function checkAnswer(road, button){
-  if (!targetRoad) return;
-  if (road.nombre === targetRoad.nombre){
+  if(!targetRoad) return;
+  if(road.nombre===targetRoad.nombre){
     // Correcto
     button.classList.remove("wrong");
     button.classList.add("correct");
     answeredCorrect.add(road.nombre);
-    drawRoad(targetRoad, "road correct");
-    // resetear rojos
-    document.querySelectorAll(".btnRoad.wrong").forEach(b => b.classList.remove("wrong"));
+    drawRoads();
+    document.querySelectorAll(".btnRoad.wrong").forEach(b=>b.classList.remove("wrong"));
     startGame();
   } else {
     // Incorrecto
-    if (!button.classList.contains("correct")){
+    if(!button.classList.contains("correct")){
       button.classList.add("wrong");
     }
   }
