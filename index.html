@@ -4,201 +4,109 @@
 <meta charset="UTF-8">
 <title>Juego de Carreteras Mejorado</title>
 <style>
-  body { display: flex; height: 100vh; margin: 0; font-family: Arial, sans-serif; }
-  #sidebar { width: 250px; background: #f9f9f9; padding: 10px; box-sizing: border-box; border-right: 1px solid #ccc; overflow-y: auto; }
-  #mapContainer { flex: 1; display: flex; justify-content: center; align-items: center; background: #ddd; }
-  svg { border: 1px solid #333; max-width: 95%; max-height: 95%; background: #f2f2f2; }
-  
-  /* Capas SVG */
-  .road { stroke-width: 3; fill: none; stroke: black; }
-  .road.highlight { stroke: red; }
-  .road.correct { stroke: green; }
-  
-  .comarcaPath { stroke:black; stroke-width:1; fill:lightgray; }
-  .city { stroke:black; stroke-width:1; }
-  .capital { fill:darkgreen; }
-  .normal { fill:dodgerblue; }
-  .cityText { font-size: 12px; pointer-events: none; }
-
-  .btnRoad { display: block; width: 100%; padding: 6px; margin: 2px 0; border: 1px solid #ccc; background: #fff; cursor: pointer; text-align: left; }
-  .btnRoad:hover { background: #eee; }
-  .btnRoad.correct { background: #9f9; }
-  .btnRoad.wrong { background: #f99; }
+  body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+  canvas { display: block; background: #f0f0f0; margin: 0 auto; }
 </style>
 </head>
 <body>
 
-<div id="sidebar">
-  <h2>Juego de Carreteras</h2>
-  <p>Haz clic en la carretera correcta:</p>
-  <div id="buttonsContainer"></div>
-  <p id="result"></p>
-</div>
-
-<div id="mapContainer">
-  <svg id="map" viewBox="0 0 1000 800">
-    <g id="comarcasLayer"></g>
-    <g id="roadsLayer"></g>
-    <g id="citiesLayer"></g>
-  </svg>
-</div>
+<canvas id="mapa" width="800" height="600"></canvas>
 
 <script>
-let comarcas = [];
-let cities = [];
-let roads = [];
-let targetRoad = null;
-let answeredCorrect = new Set();
+const canvas = document.getElementById('mapa');
+const ctx = canvas.getContext('2d');
 
-// Capas SVG
-const comarcasLayer = document.getElementById("comarcasLayer");
-const roadsLayer = document.getElementById("roadsLayer");
-const citiesLayer = document.getElementById("citiesLayer");
-const buttonsContainer = document.getElementById("buttonsContainer");
-const result = document.getElementById("result");
+// ---------- CONFIGURACIONES ----------
+const coloresComarcas = ['#FFDAB9','#E0FFFF','#FFE4E1','#F0E68C','#D8BFD8','#98FB98'];
+const ciudades = [
+  {nombre:'Ciudad A', x:100, y:100},
+  {nombre:'Ciudad B', x:300, y:150},
+  {nombre:'Ciudad C', x:200, y:300},
+  {nombre:'Ciudad D', x:500, y:400},
+  {nombre:'Ciudad E', x:650, y:200},
+];
+const carreteras = [
+  [0,1],[1,2],[2,3],[3,4]
+];
+const comarcas = [
+  {puntos:[{x:50,y:50},{x:350,y:50},{x:350,y:200},{x:50,y:200}], vecinos: [1]},
+  {puntos:[{x:360,y:50},{x:700,y:50},{x:700,y:250},{x:360,y:200}], vecinos: [0,2]},
+  {puntos:[{x:200,y:210},{x:500,y:210},{x:500,y:450},{x:200,y:350}], vecinos:[1]}
+];
 
-// ------------------ CARGAR DATOS ------------------
-async function loadJSON(url){
-  const resp = await fetch(url);
-  return await resp.json();
-}
-
-Promise.all([
-  loadJSON("malla_comarcas.json"), // Comarcas
-  loadJSON("ciudades.json"),       // Ciudades
-  loadJSON("carreteras.json")      // Carreteras
-]).then(([comarcasData, citiesData, roadsData])=>{
-  comarcas = (comarcasData.comarcas||[]).map(c => ({ ...c, status:"pending" }));
-  cities = citiesData.ciudades || [];
-  roads = (roadsData.carreteras||[]).sort((a,b)=>a.nombre.localeCompare(b.nombre,"es",{sensitivity:"base"}));
-  drawBackground();
-  createButtons();
-  startGame();
-}).catch(err=>{
-  result.textContent = "Error cargando datos: "+err;
-});
-
-// ------------------ DIBUJAR FONDO ------------------
-function drawBackground(){
-  drawComarcas();
-  drawCities();
-}
-
-// Dibujar comarcas
-function drawComarcas(){
-  comarcasLayer.innerHTML = "";
-  comarcas.forEach(c=>{
-    let d = "";
-    c.polygons.forEach(poly=>{
-      if(!poly.points || poly.points.length<3) return;
-      d += "M "+poly.points.map(p=>`${p.x} ${p.y}`).join(" L ")+" Z ";
-    });
-    const path = document.createElementNS("http://www.w3.org/2000/svg","path");
-    path.setAttribute("d", d);
-    path.setAttribute("class","comarcaPath");
-    comarcasLayer.appendChild(path);
+// ---------- FUNCIONES ----------
+function dibujarCarreteras() {
+  ctx.strokeStyle = 'gray';
+  ctx.lineWidth = 2;
+  carreteras.forEach(([a,b])=>{
+    ctx.beginPath();
+    ctx.moveTo(ciudades[a].x, ciudades[a].y);
+    ctx.lineTo(ciudades[b].x, ciudades[b].y);
+    ctx.stroke();
   });
 }
 
-// Dibujar ciudades
-function drawCities(){
-  citiesLayer.innerHTML = "";
-  cities.forEach(city=>{
-    const c = document.createElementNS("http://www.w3.org/2000/svg","circle");
-    c.setAttribute("cx", city.x);
-    c.setAttribute("cy", city.y);
-    c.setAttribute("r", 5);
-    c.setAttribute("class","city "+city.tipo);
-    citiesLayer.appendChild(c);
-
-    const text = document.createElementNS("http://www.w3.org/2000/svg","text");
-    text.setAttribute("x", city.x + 7);
-    text.setAttribute("y", city.y - 3);
-    text.setAttribute("class","cityText");
-    text.textContent = city.nombre;
-    citiesLayer.appendChild(text);
-  });
-}
-
-// ------------------ BOTONES ------------------
-function createButtons(){
-  buttonsContainer.innerHTML = "";
-  roads.forEach(r=>{
-    const btn = document.createElement("button");
-    btn.textContent = r.nombre;
-    btn.className = "btnRoad";
-    btn.onclick = ()=>checkAnswer(r, btn);
-    buttonsContainer.appendChild(btn);
-  });
-}
-
-// ------------------ JUEGO ------------------
-function startGame(){
-  if(roads.length===0) return;
-  const candidates = roads.filter(r=>!answeredCorrect.has(r.nombre));
-  if(candidates.length===0){
-    result.textContent="🎉 ¡Has acertado todas las carreteras!";
-    return;
+function colorearComarcas() {
+  const asignados = [];
+  
+  function colorValido(comarcaIndex) {
+    const vecinos = comarcas[comarcaIndex].vecinos;
+    const usados = vecinos.map(v => asignados[v]).filter(c => c !== undefined);
+    return coloresComarcas.filter(c => !usados.includes(c));
   }
-  targetRoad = candidates[Math.floor(Math.random()*candidates.length)];
-  drawRoads();
-  result.textContent="Encuentra la carretera resaltada en rojo.";
-}
 
-// Dibujar carreteras
-function drawRoads(){
-  roadsLayer.innerHTML = "";
-  // Carreteras ya acertadas → verde
-  roads.forEach(r=>{
-    if(answeredCorrect.has(r.nombre)){
-      r.segmentos.forEach(seg=>{
-        const poly = document.createElementNS("http://www.w3.org/2000/svg","polyline");
-        poly.setAttribute("points", seg.puntos.map(p=>p.join(",")).join(" "));
-        poly.setAttribute("class","road correct");
-        roadsLayer.appendChild(poly);
-      });
-    }
-  });
-  // Carretera actual → roja
-  if(targetRoad && !answeredCorrect.has(targetRoad.nombre)){
-    targetRoad.segmentos.forEach(seg=>{
-      const poly = document.createElementNS("http://www.w3.org/2000/svg","polyline");
-      poly.setAttribute("points", seg.puntos.map(p=>p.join(",")).join(" "));
-      poly.setAttribute("class","road highlight");
-      roadsLayer.appendChild(poly);
-    });
-  }
-  // Otras carreteras → negras
-  roads.forEach(r=>{
-    if(r!==targetRoad && !answeredCorrect.has(r.nombre)){
-      r.segmentos.forEach(seg=>{
-        const poly = document.createElementNS("http://www.w3.org/2000/svg","polyline");
-        poly.setAttribute("points", seg.puntos.map(p=>p.join(",")).join(" "));
-        poly.setAttribute("class","road");
-        roadsLayer.appendChild(poly);
-      });
-    }
+  comarcas.forEach((comarca,i)=>{
+    const disponibles = colorValido(i);
+    asignados[i] = disponibles[Math.floor(Math.random()*disponibles.length)];
+    // dibujar polígono
+    ctx.fillStyle = asignados[i];
+    ctx.beginPath();
+    const pts = comarca.puntos;
+    ctx.moveTo(pts[0].x, pts[0].y);
+    for(let j=1;j<pts.length;j++) ctx.lineTo(pts[j].x, pts[j].y);
+    ctx.closePath();
+    ctx.fill();
+
+    // dibujar borde blanco
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 2;
+    ctx.stroke();
   });
 }
 
-// Comprobar respuesta
-function checkAnswer(road, button){
-  if(!targetRoad) return;
-  if(road.nombre===targetRoad.nombre){
-    // Correcto
-    button.classList.remove("wrong");
-    button.classList.add("correct");
-    answeredCorrect.add(road.nombre);
-    drawRoads();
-    document.querySelectorAll(".btnRoad.wrong").forEach(b=>b.classList.remove("wrong"));
-    startGame();
-  } else {
-    // Incorrecto
-    if(!button.classList.contains("correct")){
-      button.classList.add("wrong");
+function dibujarCiudades() {
+  const posiciones = [];
+  ciudades.forEach(c=>{
+    // evitar solapamiento simple
+    let posX = c.x, posY = c.y;
+    let colision = true;
+    while(colision) {
+      colision = false;
+      for(const p of posiciones){
+        if(Math.abs(p.x-posX)<50 && Math.abs(p.y-posY)<20){
+          posY += 15; // mover hacia abajo
+          colision = true;
+          break;
+        }
+      }
     }
-  }
+    posiciones.push({x:posX,y:posY});
+    // dibujar ciudad
+    ctx.fillStyle = 'black';
+    ctx.font = '14px Arial';
+    ctx.fillText(c.nombre, posX, posY);
+    // opcional: dibujar punto de la ciudad
+    ctx.beginPath();
+    ctx.arc(c.x, c.y, 5, 0, 2*Math.PI);
+    ctx.fill();
+  });
 }
+
+// ---------- DIBUJAR MAPA ----------
+colorearComarcas();
+dibujarCarreteras();
+dibujarCiudades();
+
 </script>
 
 </body>
