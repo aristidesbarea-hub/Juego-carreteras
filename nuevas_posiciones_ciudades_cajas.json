@@ -6,7 +6,10 @@
       "y": 292.8707580566406,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Solsona"
+      ]
     },
     {
       "nombre": "Barcelona",
@@ -14,7 +17,10 @@
       "y": 496.40411376953125,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Barcelona"
+      ]
     },
     {
       "nombre": "Sant Feliu de Llobregat",
@@ -22,7 +28,11 @@
       "y": 483.8470764160156,
       "width": 70,
       "height": 19.108883319409586,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Sant Feliu",
+        "de Llobregat"
+      ]
     },
     {
       "nombre": "Vilanova i la Geltru",
@@ -30,7 +40,10 @@
       "y": 555.93896484375,
       "width": 112.77360066833756,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Vilanova i la Geltru"
+      ]
     },
     {
       "nombre": "Vilafranca del Penedès",
@@ -38,7 +51,11 @@
       "y": 504.18804931640625,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Vilafranca",
+        "del Penedès"
+      ]
     },
     {
       "nombre": "Mataró",
@@ -46,7 +63,10 @@
       "y": 449.6397705078125,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Mataró"
+      ]
     },
     {
       "nombre": "Sabadell",
@@ -54,7 +74,10 @@
       "y": 437.5728759765625,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Sabadell"
+      ]
     },
     {
       "nombre": "Terrassa",
@@ -62,7 +85,10 @@
       "y": 433.6041259765625,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Terrassa"
+      ]
     },
     {
       "nombre": "Granollers",
@@ -70,7 +96,10 @@
       "y": 413.5425109863281,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Granollers"
+      ]
     },
     {
       "nombre": "Manresa",
@@ -78,7 +107,10 @@
       "y": 377.3367919921875,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Manresa"
+      ]
     },
     {
       "nombre": "Moià",
@@ -86,7 +118,10 @@
       "y": 355.3053283691406,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Moià"
+      ]
     },
     {
       "nombre": "Vic",
@@ -94,7 +129,10 @@
       "y": 318.37017822265625,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Vic"
+      ]
     },
     {
       "nombre": "Santa Coloma de Farners",
@@ -102,7 +140,11 @@
       "y": 334.3261413574219,
       "width": 80.6934001670844,
       "height": 19.108883319409642,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Santa Coloma",
+        "de Farners"
+      ]
     },
     {
       "nombre": "El Vendrell",
@@ -110,7 +152,10 @@
       "y": 538.9976196289062,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "El Vendrell"
+      ]
     },
     {
       "nombre": "Tarragona",
@@ -118,7 +163,10 @@
       "y": 583.726806640625,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Tarragona"
+      ]
     },
     {
       "nombre": "Reus",
@@ -126,7 +174,10 @@
       "y": 556.8462524414062,
       "width": 61.08883319409637,
       "height": 19.108883319409642,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Reus"
+      ]
     },
     {
       "nombre": "Falset",
@@ -134,7 +185,10 @@
       "y": 560.60986328125,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Falset"
+      ]
     },
     {
       "nombre": "Mora d'Ebre",
@@ -142,7 +196,11 @@
       "y": 589.8069458007812,
       "width": 56.63324979114452,
       "height": 31.584516847674763,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Mora",
+        "d'Ebre"
+      ]
     },
     {
       "nombre": "Gandesa",
@@ -150,7 +208,10 @@
       "y": 583.4909057617188,
       "width": 59.30659983291564,
       "height": 19.802283486494048,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Gandesa"
+      ]
     },
     {
       "nombre": "Tortosa",
@@ -158,7 +219,10 @@
       "y": 658.5467529296875,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Tortosa"
+      ]
     },
     {
       "nombre": "Amposta",
@@ -166,7 +230,10 @@
       "y": 691.9763793945312,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Amposta"
+      ]
     },
     {
       "nombre": "Valls",
@@ -174,7 +241,10 @@
       "y": 520.6217651367188,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Valls"
+      ]
     },
     {
       "nombre": "Les Borges Blanques",
@@ -182,7 +252,11 @@
       "y": 464.796630859375,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Les Borges",
+        "Blanques"
+      ]
     },
     {
       "nombre": "Mollerusa",
@@ -190,7 +264,10 @@
       "y": 404.8223571777344,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Mollerusa"
+      ]
     },
     {
       "nombre": "Tàrrega",
@@ -198,7 +275,10 @@
       "y": 400.55999755859375,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Tàrrega"
+      ]
     },
     {
       "nombre": "Cervera",
@@ -206,7 +286,10 @@
       "y": 394.03228759765625,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Cervera"
+      ]
     },
     {
       "nombre": "Lleida",
@@ -214,7 +297,10 @@
       "y": 405.4175720214844,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Lleida"
+      ]
     },
     {
       "nombre": "Balaguer",
@@ -222,7 +308,10 @@
       "y": 353.9605407714844,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Balaguer"
+      ]
     },
     {
       "nombre": "Tremp",
@@ -230,7 +319,10 @@
       "y": 239.21852111816406,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Tremp"
+      ]
     },
     {
       "nombre": "El Pont de Suert",
@@ -238,7 +330,10 @@
       "y": 167.67782592773438,
       "width": 98.51573377889169,
       "height": 17.3266499582289,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "El Pont de Suert"
+      ]
     },
     {
       "nombre": "Vielha",
@@ -246,7 +341,10 @@
       "y": 63.096954345703125,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Vielha"
+      ]
     },
     {
       "nombre": "Sort",
@@ -254,7 +352,10 @@
       "y": 165.1912841796875,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Sort"
+      ]
     },
     {
       "nombre": "La Seu d'Urgell",
@@ -262,7 +363,11 @@
       "y": 185.16798400878906,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "La Seu",
+        "d'Urgell"
+      ]
     },
     {
       "nombre": "Puigcerdà",
@@ -270,7 +375,10 @@
       "y": 157.25843811035156,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Puigcerdà"
+      ]
     },
     {
       "nombre": "Ripoll",
@@ -278,7 +386,10 @@
       "y": 231.97946166992188,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Ripoll"
+      ]
     },
     {
       "nombre": "Berga",
@@ -286,7 +397,10 @@
       "y": 261.079345703125,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Berga"
+      ]
     },
     {
       "nombre": "Prats del Lluçanès",
@@ -294,7 +408,11 @@
       "y": 284.83251953125,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Prats del",
+        "Lluçanès"
+      ]
     },
     {
       "nombre": "Olot",
@@ -302,7 +420,10 @@
       "y": 236.9763641357422,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Olot"
+      ]
     },
     {
       "nombre": "Banyoles",
@@ -310,7 +431,10 @@
       "y": 260.60711669921875,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Banyoles"
+      ]
     },
     {
       "nombre": "Girona",
@@ -318,7 +442,10 @@
       "y": 303.6864929199219,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Girona"
+      ]
     },
     {
       "nombre": "La Bisbal d'Empordà",
@@ -326,7 +453,11 @@
       "y": 303.6079406738281,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "La Bisbal",
+        "d'Empordà"
+      ]
     },
     {
       "nombre": "Figueres",
@@ -334,7 +465,10 @@
       "y": 210.2229461669922,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Figueres"
+      ]
     },
     {
       "nombre": "Igualada",
@@ -342,7 +476,10 @@
       "y": 423.40106201171875,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Igualada"
+      ]
     },
     {
       "nombre": "Montblanc",
@@ -350,7 +487,10 @@
       "y": 486.7168273925781,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Montblanc"
+      ]
     },
     {
       "nombre": "Guissona",
@@ -358,7 +498,10 @@
       "y": 356.95281982421875,
       "width": 70,
       "height": 20,
-      "tipo": "capital"
+      "tipo": "capital",
+      "lines": [
+        "Guissona"
+      ]
     },
     {
       "nombre": "Calaf",
@@ -366,7 +509,10 @@
       "y": 378.085205078125,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Calaf"
+      ]
     },
     {
       "nombre": "Cradona",
@@ -374,7 +520,10 @@
       "y": 321.0736999511719,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Cradona"
+      ]
     },
     {
       "nombre": "Navàs",
@@ -382,7 +531,10 @@
       "y": 324.29815673828125,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Navàs"
+      ]
     },
     {
       "nombre": "Sallent",
@@ -390,7 +542,10 @@
       "y": 353.0366516113281,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Sallent"
+      ]
     },
     {
       "nombre": "Sant Sadurní d'Anoia",
@@ -398,7 +553,11 @@
       "y": 475.5887145996094,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Sant Sadurní",
+        "d'Anoia"
+      ]
     },
     {
       "nombre": "Martorell",
@@ -406,7 +565,10 @@
       "y": 460.49835205078125,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Martorell"
+      ]
     },
     {
       "nombre": "Sitges",
@@ -414,7 +576,10 @@
       "y": 541.0527954101562,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Sitges"
+      ]
     },
     {
       "nombre": "Sant Boi de Llobregat",
@@ -422,7 +587,11 @@
       "y": 518.4891967773438,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Sant Boi de",
+        "Llobregat"
+      ]
     },
     {
       "nombre": "Badalona",
@@ -430,7 +599,10 @@
       "y": 478.43682861328125,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Badalona"
+      ]
     },
     {
       "nombre": "Premià de Mar",
@@ -438,7 +610,10 @@
       "y": 463.6196594238281,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Premià de Mar"
+      ]
     },
     {
       "nombre": "Arenys de Mar",
@@ -446,7 +621,10 @@
       "y": 436.96002197265625,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Arenys de Mar"
+      ]
     },
     {
       "nombre": "Calella",
@@ -454,7 +632,10 @@
       "y": 424.6145324707031,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Calella"
+      ]
     },
     {
       "nombre": "Blanes",
@@ -462,7 +643,10 @@
       "y": 410.5735778808594,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Blanes"
+      ]
     },
     {
       "nombre": "Lloret de Mar",
@@ -470,7 +654,10 @@
       "y": 398.4036560058594,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Lloret de Mar"
+      ]
     },
     {
       "nombre": "Sant Feliu de Guíxols",
@@ -478,7 +665,10 @@
       "y": 380.59893798828125,
       "width": 97.62461709830131,
       "height": 17.32664995822887,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Sant Feliu de Guíxols"
+      ]
     },
     {
       "nombre": "Palamós",
@@ -486,7 +676,10 @@
       "y": 355.41741943359375,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Palamós"
+      ]
     },
     {
       "nombre": "Palafrugell",
@@ -494,7 +687,10 @@
       "y": 330.29559326171875,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Palafrugell"
+      ]
     },
     {
       "nombre": "Torroella de Montgrí",
@@ -502,7 +698,11 @@
       "y": 291.57464599609375,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Torroella de",
+        "Montgrí"
+      ]
     },
     {
       "nombre": "Llagostera",
@@ -510,7 +710,10 @@
       "y": 347.44549560546875,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Llagostera"
+      ]
     },
     {
       "nombre": "l'Escala",
@@ -518,7 +721,10 @@
       "y": 261.60595703125,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "l'Escala"
+      ]
     },
     {
       "nombre": "Roses",
@@ -526,7 +732,10 @@
       "y": 230.3502197265625,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Roses"
+      ]
     },
     {
       "nombre": "Cadaqués",
@@ -534,7 +743,10 @@
       "y": 213.01742553710938,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Cadaqués"
+      ]
     },
     {
       "nombre": "la Jonquera",
@@ -542,7 +754,10 @@
       "y": 166.12759399414062,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "la Jonquera"
+      ]
     },
     {
       "nombre": "Portbou",
@@ -550,7 +765,10 @@
       "y": 166.72238159179688,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Portbou"
+      ]
     },
     {
       "nombre": "Besalú",
@@ -558,7 +776,10 @@
       "y": 233.7693328857422,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Besalú"
+      ]
     },
     {
       "nombre": "Manlleu",
@@ -566,7 +787,10 @@
       "y": 298.5468444824219,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Manlleu"
+      ]
     },
     {
       "nombre": "Torelló",
@@ -574,7 +798,10 @@
       "y": 278.5965576171875,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Torelló"
+      ]
     },
     {
       "nombre": "Ribes de Freser",
@@ -582,7 +809,11 @@
       "y": 190.05307006835938,
       "width": 56.63324979114452,
       "height": 24.455583402951845,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Ribes de",
+        "Freser"
+      ]
     },
     {
       "nombre": "Camprodon",
@@ -590,7 +821,10 @@
       "y": 196.5614471435547,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Camprodon"
+      ]
     },
     {
       "nombre": "Bellver de Cerdanya",
@@ -598,7 +832,11 @@
       "y": 195.2447967529297,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Bellver de",
+        "Cerdanya"
+      ]
     },
     {
       "nombre": "Bagà",
@@ -606,7 +844,10 @@
       "y": 214.85629272460938,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Bagà"
+      ]
     },
     {
       "nombre": "Sant Llorenç de Morunys",
@@ -614,7 +855,11 @@
       "y": 246.4821014404297,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Sant Llorenç de",
+        "Morunys"
+      ]
     },
     {
       "nombre": "Organyà",
@@ -622,7 +867,10 @@
       "y": 222.6774139404297,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Organyà"
+      ]
     },
     {
       "nombre": "Oliana",
@@ -630,7 +878,10 @@
       "y": 270.6387634277344,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Oliana"
+      ]
     },
     {
       "nombre": "Ponts",
@@ -638,7 +889,10 @@
       "y": 316.53961181640625,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Ponts"
+      ]
     },
     {
       "nombre": "Artesa de Segre",
@@ -646,7 +900,11 @@
       "y": 317.01287841796875,
       "width": 58.415483152325265,
       "height": 27.128933444722918,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Artesa de",
+        "Segre"
+      ]
     },
     {
       "nombre": "Àger",
@@ -654,7 +912,10 @@
       "y": 288.8659362792969,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Àger"
+      ]
     },
     {
       "nombre": "Isona",
@@ -662,7 +923,10 @@
       "y": 253.41098022460938,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Isona"
+      ]
     },
     {
       "nombre": "la Pobla de Segur",
@@ -670,7 +934,11 @@
       "y": 212.3151397705078,
       "width": 44.15761626287943,
       "height": 23.56446672236146,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "la Pobla",
+        "de Segur"
+      ]
     },
     {
       "nombre": "Esterri d'Àneu",
@@ -678,7 +946,10 @@
       "y": 91.63912963867188,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Esterri d'Àneu"
+      ]
     },
     {
       "nombre": "Llívia",
@@ -686,7 +957,10 @@
       "y": 153.60397338867188,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Llívia"
+      ]
     },
     {
       "nombre": "Alfarràs",
@@ -694,7 +968,10 @@
       "y": 346.3028564453125,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Alfarràs"
+      ]
     },
     {
       "nombre": "Alcarràs",
@@ -702,7 +979,10 @@
       "y": 436.4287414550781,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Alcarràs"
+      ]
     },
     {
       "nombre": "Juneda",
@@ -710,7 +990,10 @@
       "y": 430.10418701171875,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Juneda"
+      ]
     },
     {
       "nombre": "Agramunt",
@@ -718,15 +1001,21 @@
       "y": 357.8084411621094,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Agramunt"
+      ]
     },
     {
       "nombre": "Prades",
-      "x": 207.65444946289062,
-      "y": 507.78118896484375,
+      "x": 182.70318603515625,
+      "y": 510.45452880859375,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Prades"
+      ]
     },
     {
       "nombre": "la Granadella",
@@ -734,7 +1023,10 @@
       "y": 492.6067199707031,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "la Granadella"
+      ]
     },
     {
       "nombre": "Maials",
@@ -742,7 +1034,10 @@
       "y": 491.64044189453125,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Maials"
+      ]
     },
     {
       "nombre": "Flix",
@@ -750,7 +1045,10 @@
       "y": 526.6303100585938,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Flix"
+      ]
     },
     {
       "nombre": "Horta de Sant Joan",
@@ -758,7 +1056,11 @@
       "y": 613.127685546875,
       "width": 56.63324979114452,
       "height": 26.237816764132617,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Horta de",
+        "Sant Joan"
+      ]
     },
     {
       "nombre": "l'Ametlla de Mar",
@@ -766,7 +1068,10 @@
       "y": 649.9760131835938,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "l'Ametlla de Mar"
+      ]
     },
     {
       "nombre": "Deltebre",
@@ -774,7 +1079,10 @@
       "y": 690.6181640625,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Deltebre"
+      ]
     },
     {
       "nombre": "la Ràpita",
@@ -782,7 +1090,10 @@
       "y": 732.1390991210938,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "la Ràpita"
+      ]
     },
     {
       "nombre": "Alcanar",
@@ -790,7 +1101,10 @@
       "y": 756.0833740234375,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Alcanar"
+      ]
     },
     {
       "nombre": "la Senia",
@@ -798,7 +1112,10 @@
       "y": 717.2091064453125,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "la Senia"
+      ]
     },
     {
       "nombre": "Santa Coloma de Queralt",
@@ -806,7 +1123,11 @@
       "y": 433.88116455078125,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Santa Coloma",
+        "de Queralt"
+      ]
     },
     {
       "nombre": "Centelles",
@@ -814,7 +1135,10 @@
       "y": 359.5133361816406,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Centelles"
+      ]
     },
     {
       "nombre": "la Garriga",
@@ -822,7 +1146,10 @@
       "y": 392.175537109375,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "la Garriga"
+      ]
     },
     {
       "nombre": "Sant Celoni",
@@ -830,7 +1157,11 @@
       "y": 396.05517578125,
       "width": 46.830966304650474,
       "height": 36.04010025062655,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Sant",
+        "Celoni"
+      ]
     },
     {
       "nombre": "Hostalric",
@@ -838,7 +1169,10 @@
       "y": 372.9183044433594,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Hostalric"
+      ]
     },
     {
       "nombre": "Anglès",
@@ -846,7 +1180,10 @@
       "y": 308.2414245605469,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Anglès"
+      ]
     },
     {
       "nombre": "l'Hospitalet de Llobregat",
@@ -854,7 +1191,10 @@
       "y": 513.5758666992188,
       "width": 112.77360066833751,
       "height": 18.217766638819285,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "l'Hospitalet de Llobregat"
+      ]
     },
     {
       "nombre": "Calafell",
@@ -862,7 +1202,10 @@
       "y": 559.33984375,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Calafell"
+      ]
     },
     {
       "nombre": "Torredembarra",
@@ -870,7 +1213,10 @@
       "y": 570.1084594726562,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Torredembarra"
+      ]
     },
     {
       "nombre": "Salou",
@@ -878,7 +1224,10 @@
       "y": 595.543701171875,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Salou"
+      ]
     },
     {
       "nombre": "Cambrils",
@@ -886,7 +1235,10 @@
       "y": 600.9607543945312,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Cambrils"
+      ]
     },
     {
       "nombre": "Vandellòs",
@@ -894,7 +1246,10 @@
       "y": 598.995361328125,
       "width": 70,
       "height": 20,
-      "tipo": "normal"
+      "tipo": "normal",
+      "lines": [
+        "Vandellòs"
+      ]
     }
   ]
 }
