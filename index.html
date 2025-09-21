@@ -2,202 +2,311 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Juego de Carreteras Mejorado</title>
+<title>Juego de Carreteras y Ciudades</title>
 <style>
   body { display: flex; height: 100vh; margin: 0; font-family: Arial, sans-serif; }
   #sidebar { width: 250px; background: #f9f9f9; padding: 10px; box-sizing: border-box; border-right: 1px solid #ccc; overflow-y: auto; }
   #mapContainer { flex: 1; display: flex; justify-content: center; align-items: center; background: #ddd; }
   svg { border: 1px solid #333; max-width: 95%; max-height: 95%; background: #f2f2f2; }
-  .road { stroke-width: 3; fill: none; stroke: gray; }
+  
+  /* Estilos para comarcas */
+  .comarca {
+    stroke: black;
+    stroke-width: 0.5;
+    stroke-linejoin: round;
+    fill: transparent; 
+  }
+  
+  /* Estilos para carreteras */
+  .road { stroke-width: 3; fill: none; }
   .road.correct { stroke: green; }
+  .road.target { stroke: red; }
+  
+  /* Estilos para puntos y etiquetas de ciudades */
+  .city-point {
+    pointer-events: none;
+    fill: #333;
+    r: 2;
+  }
+  .city-label {
+    font-size: 8px; /* Sincronizado con el editor */
+    font-family: Arial, sans-serif;
+    pointer-events: none;
+    text-anchor: middle;
+    text-shadow: 
+      -1px -1px 0 #FFF,  
+      1px -1px 0 #FFF,
+      -1px 1px 0 #FFF,
+      1px 1px 0 #FFF;
+  }
+  .city-label.capital {
+    font-weight: bold;
+    font-size: 10px; /* Sincronizado con el editor */
+  }
+
+  /* Estilos del juego */
   .btnRoad { display: block; width: 100%; padding: 6px; margin: 2px 0; border: 1px solid #ccc; background: #fff; cursor: pointer; text-align: left; }
   .btnRoad:hover { background: #eee; }
   .btnRoad.correct { background: #9f9; }
   .btnRoad.wrong { background: #f99; }
-  .cityLabel { fill: black; font-size: 14px; font-family: Arial, sans-serif; }
-  .comarca { stroke: white; stroke-width: 2; }
+  .target-road-name { font-weight: bold; color: #333; }
 </style>
 </head>
 <body>
 
 <div id="sidebar">
   <h2>Juego de Carreteras</h2>
-  <p>Haz clic en la carretera correcta:</p>
-  <div id="buttonsContainer"></div>
-  <p id="result"></p>
+  <button id="hintButton" style="width: 100%; padding: 6px; margin-bottom: 10px;">Mostrar Respuesta</button>
+  <div id="roadButtons"></div>
 </div>
 
 <div id="mapContainer">
-  <svg id="map" viewBox="0 0 1000 800">
-    <image href="MapaBase.png" x="0" y="0" width="1000" height="800"/>
+  <svg viewBox="0 0 800 800">
+    <g id="backgroundLayer">
+      <image href="MRelieve.png" x="0" y="0" width="800" height="800"></image>
+    </g>
+
     <g id="comarcasLayer"></g>
     <g id="roadsLayer"></g>
+    <g id="cityPointsLayer"></g>
     <g id="citiesLayer"></g>
   </svg>
 </div>
 
 <script>
-let roads = [];
-let targetRoad = null;
-let answeredCorrect = new Set();
+  let comarcas = [];
+  let carreteras = [];
+  let originalCiudades = [];
+  let ciudadesConCajas = [];
+  let answeredCorrect = new Set();
+  let targetRoad = null;
+  
+  const comarcasLayer = document.getElementById('comarcasLayer');
+  const roadsLayer = document.getElementById('roadsLayer');
+  const cityPointsLayer = document.getElementById('cityPointsLayer');
+  const citiesLayer = document.getElementById('citiesLayer');
+  const roadButtonsDiv = document.getElementById('roadButtons');
+  const hintButton = document.getElementById('hintButton');
+  
+  const pastelColors = [
+      '#FFB6C1', '#F08080', '#ADD8E6', '#87CEFA', '#B0C4DE',
+      '#98FB98', '#90EE90', '#F0E68C', '#FAFAD2', '#DDA0DD',
+      '#E6E6FA', '#D2B48C', '#C0C0C0', '#FFEBCD', '#FFDAB9'
+  ];
+  let colorIndex = 0;
 
-// --- Ejemplo de ciudades y comarcas ---
-const ciudades = [
-  {nombre: "Ciudad A", x: 150, y: 100},
-  {nombre: "Ciudad B", x: 400, y: 150},
-  {nombre: "Ciudad C", x: 600, y: 300},
-  {nombre: "Ciudad D", x: 750, y: 500},
-  {nombre: "Ciudad E", x: 300, y: 400}
-];
+  async function loadData() {
+    try {
+      const timestamp = new Date().getTime();
+      const comarcasResponse = await fetch(`comarcas.json?t=${timestamp}`);
+      comarcas = await comarcasResponse.json();
+      const carreterasResponse = await fetch(`carreteras.json?t=${timestamp}`);
+      carreteras = await carreterasResponse.json();
+      const ciudadesResponse = await fetch(`ciudades.json?t=${timestamp}`);
+      originalCiudades = await ciudadesResponse.json();
+      const cajasResponse = await fetch(`nuevas_posiciones_ciudades_cajas.json?t=${timestamp}`);
+      ciudadesConCajas = await cajasResponse.json();
 
-const comarcas = [
-  {puntos: [[50,50],[350,50],[350,250],[50,250]], vecinos: [1]},
-  {puntos: [[360,50],[700,50],[700,250],[360,250]], vecinos: [0,2]},
-  {puntos: [[200,260],[500,260],[500,500],[200,500]], vecinos: [1]}
-];
-
-const coloresComarcas = ['#FFDAB9','#E0FFFF','#FFE4E1','#F0E68C','#D8BFD8','#98FB98'];
-
-// --- Capas SVG ---
-const roadsLayer = document.getElementById("roadsLayer");
-const buttonsContainer = document.getElementById("buttonsContainer");
-const result = document.getElementById("result");
-const citiesLayer = document.getElementById("citiesLayer");
-const comarcasLayer = document.getElementById("comarcasLayer");
-
-// --- Cargar carreteras desde JSON ---
-fetch("carreteras.json")
-  .then(res => res.json())
-  .then(content => {
-    roads = (content.carreteras || []).sort((a, b) =>
-      a.nombre.localeCompare(b.nombre, "es", { sensitivity: "base" })
-    );
-    createButtons();
-    startGame();
-  })
-  .catch(err => {
-    result.textContent = "Error cargando carreteras.json: " + err;
-  });
-
-// --- Crear botones ---
-function createButtons(){
-  buttonsContainer.innerHTML = "";
-  roads.forEach(r => {
-    const btn = document.createElement("button");
-    btn.textContent = r.nombre;
-    btn.className = "btnRoad";
-    btn.onclick = () => checkAnswer(r, btn);
-    buttonsContainer.appendChild(btn);
-  });
-}
-
-// --- Iniciar juego ---
-function startGame(){
-  if (roads.length === 0) return;
-  const candidates = roads.filter(r => !answeredCorrect.has(r.nombre));
-  if (candidates.length === 0){
-    result.textContent = "🎉 ¡Has acertado todas las carreteras!";
-    return;
+      initializeGame();
+    } catch (error) {
+      console.error('Error al cargar los datos:', error);
+    }
   }
-  targetRoad = candidates[Math.floor(Math.random() * candidates.length)];
-  drawRoad(targetRoad, "road");
-  result.textContent = "Encuentra la carretera resaltada en gris.";
-}
 
-// --- Dibujar carreteras ---
-function drawRoad(road, cssClass){
-  roadsLayer.innerHTML = "";
-  roads.forEach(r => {
-    if (answeredCorrect.has(r.nombre)){
-      r.segmentos.forEach(seg => {
+  function drawMap() {
+    comarcasLayer.innerHTML = "";
+    if (comarcas && comarcas.comarcas) {
+      comarcas.comarcas.forEach(comarca => {
+        comarca.polygons.forEach(polygon => {
+          const poly = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+          const pointsStr = polygon.points.map(p => `${p.x},${p.y}`).join(" ");
+          poly.setAttribute("points", pointsStr);
+          poly.setAttribute("class", "comarca");
+          comarcasLayer.appendChild(poly);
+        });
+      });
+    }
+
+    cityPointsLayer.innerHTML = "";
+    citiesLayer.innerHTML = "";
+    
+    if (originalCiudades && originalCiudades.ciudades && ciudadesConCajas && ciudadesConCajas.ciudades) {
+      ciudadesConCajas.ciudades.forEach(ciudadConCaja => {
+        const ciudadOriginal = originalCiudades.ciudades.find(c => c.nombre === ciudadConCaja.nombre);
+        
+        if (ciudadOriginal) {
+            const cityPoint = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            cityPoint.setAttribute("cx", ciudadOriginal.x);
+            cityPoint.setAttribute("cy", ciudadOriginal.y);
+            cityPoint.setAttribute("class", "city-point");
+            cityPointsLayer.appendChild(cityPoint);
+        }
+
+        const cityGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        cityGroup.setAttribute("class", "city-box-group");
+        cityGroup.setAttribute("transform", `translate(${ciudadConCaja.x}, ${ciudadConCaja.y})`);
+        
+        const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        text.setAttribute("class", "city-label " + (ciudadConCaja.tipo === 'capital' ? 'capital' : ''));
+        cityGroup.appendChild(text);
+
+        citiesLayer.appendChild(cityGroup);
+        
+        if (ciudadConCaja.lines && ciudadConCaja.lineYOffsets) {
+            drawLinesInRect(text, ciudadConCaja.lines, ciudadConCaja.lineYOffsets, ciudadConCaja.width);
+        } else {
+            console.warn(`No se encontraron datos de líneas para ${ciudadConCaja.nombre}. Se intentará volver a calcular.`);
+            wrapTextInRect(text, ciudadConCaja.nombre, ciudadConCaja.width);
+        }
+      });
+    }
+  }
+
+  function drawLinesInRect(text, lines, lineYOffsets, width) {
+    while (text.firstChild) {
+        text.removeChild(text.firstChild);
+    }
+    const xPos = width / 2;
+    lines.forEach((lineText, index) => {
+        const tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+        tspan.setAttribute("x", xPos);
+        tspan.setAttribute("y", lineYOffsets[index]);
+        tspan.textContent = lineText;
+        text.appendChild(tspan);
+    });
+  }
+
+  function wrapTextInRect(text, fullText, maxWidth) {
+    while (text.firstChild) { text.removeChild(text.firstChild); }
+    const words = fullText.split(" ");
+    let line = "";
+    const padding = 10;
+    const fontSize = parseFloat(window.getComputedStyle(text).fontSize);
+    const lineHeight = fontSize * 1.2;
+    const xPos = maxWidth / 2;
+    let tspans = [];
+    const tempTspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+    text.appendChild(tempTspan);
+    for (let i = 0; i < words.length; i++) {
+        const testLine = line + (line ? ' ' : '') + words[i];
+        tempTspan.textContent = testLine;
+        if (tempTspan.getComputedTextLength() > maxWidth - padding) {
+            if (line === "") {
+                tspans.push(words[i]);
+            } else {
+                tspans.push(line);
+                line = words[i];
+            }
+        } else {
+            line = testLine;
+        }
+    }
+    tspans.push(line);
+    text.removeChild(tempTspan);
+    
+    const totalTextHeight = tspans.length * lineHeight;
+    const rectHeight = 20; 
+    const initialY = (rectHeight / 2) - (totalTextHeight / 2) + (lineHeight / 2) * 0.9;
+    
+    tspans.forEach((tspanText, index) => {
+      const tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+      tspan.setAttribute("x", xPos);
+      tspan.setAttribute("y", initialY + (index * lineHeight));
+      tspan.textContent = tspanText;
+      text.appendChild(tspan);
+    });
+  }
+
+  function initializeGame() {
+    drawMap();
+    targetRoad = getRandomRoad();
+    updateButtons();
+    drawRoad(targetRoad, 'target');
+    hintButton.onclick = giveHint;
+  }
+
+  function getRandomRoad() {
+    const unans = carreteras.carreteras.filter(r => !answeredCorrect.has(r.nombre));
+    if (unans.length === 0) {
+      alert("¡Felicidades, has acertado todas las carreteras!");
+      return null;
+    }
+    const randomIndex = Math.floor(Math.random() * unans.length);
+    return unans[randomIndex];
+  }
+
+  function updateButtons() {
+    roadButtonsDiv.innerHTML = '';
+    const allRoads = carreteras.carreteras.slice();
+    allRoads.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    
+    allRoads.forEach(road => {
+      const button = document.createElement('button');
+      button.className = 'btnRoad';
+      button.textContent = road.nombre;
+      button.onclick = () => checkAnswer(road, button);
+
+      // --- CORRECCIÓN AÑADIDA AQUÍ ---
+      // Si la carretera ya fue respondida, le añadimos la clase 'correct' para que se mantenga verde
+      if (answeredCorrect.has(road.nombre)) {
+        button.classList.add('correct');
+      }
+      // --- FIN DE LA CORRECCIÓN ---
+
+      roadButtonsDiv.appendChild(button);
+    });
+  }
+
+  function giveHint() {
+    if (!targetRoad) return;
+    const correctButton = Array.from(roadButtonsDiv.children).find(btn => btn.textContent === targetRoad.nombre);
+    if (correctButton) {
+        checkAnswer(targetRoad, correctButton);
+    }
+  }
+
+  function drawRoad(road, cssClass) {
+    roadsLayer.innerHTML = "";
+    carreteras.carreteras.forEach(r => {
+      if (answeredCorrect.has(r.nombre)){
+        r.segmentos.forEach(seg => {
+          const poly=document.createElementNS("http://www.w3.org/2000/svg","polyline");
+          poly.setAttribute("points", seg.puntos.map(p=>p.join(",")).join(" "));
+          poly.setAttribute("class","road correct");
+          roadsLayer.appendChild(poly);
+        });
+      }
+    });
+    if (road && !answeredCorrect.has(road.nombre)){
+      road.segmentos.forEach(seg=>{
         const poly=document.createElementNS("http://www.w3.org/2000/svg","polyline");
         poly.setAttribute("points", seg.puntos.map(p=>p.join(",")).join(" "));
-        poly.setAttribute("class","road correct");
+        poly.setAttribute("class",`road ${cssClass}`);
         roadsLayer.appendChild(poly);
       });
     }
-  });
-  if (!answeredCorrect.has(road.nombre)){
-    road.segmentos.forEach(seg=>{
-      const poly=document.createElementNS("http://www.w3.org/2000/svg","polyline");
-      poly.setAttribute("points", seg.puntos.map(p=>p.join(",")).join(" "));
-      poly.setAttribute("class",cssClass);
-      roadsLayer.appendChild(poly);
-    });
   }
-}
 
-// --- Comprobar respuesta ---
-function checkAnswer(road, button){
-  if (!targetRoad) return;
-  if (road.nombre === targetRoad.nombre){
-    button.classList.remove("wrong");
-    button.classList.add("correct");
-    answeredCorrect.add(road.nombre);
-    drawRoad(targetRoad, "road correct");
-    document.querySelectorAll(".btnRoad.wrong").forEach(b => b.classList.remove("wrong"));
-    startGame();
-  } else {
-    if (!button.classList.contains("correct")){
+  function checkAnswer(road, button) {
+    if (!targetRoad) return;
+    if (road.nombre === targetRoad.nombre) {
+      button.classList.remove("wrong");
+      button.classList.add("correct");
+      answeredCorrect.add(road.nombre);
+      drawRoad(targetRoad, 'correct');
+      setTimeout(() => {
+        targetRoad = getRandomRoad();
+        if (targetRoad) {
+          updateButtons();
+          drawRoad(targetRoad, 'target');
+        }
+      }, 1000);
+    } else {
       button.classList.add("wrong");
     }
   }
-}
 
-// --- Dibujar comarcas ---
-function dibujarComarcas(){
-  const asignados = [];
-  comarcas.forEach((comarca,i)=>{
-    // Elegir color que no repita vecinos
-    const usados = (comarca.vecinos || []).map(v => asignados[v]).filter(c => c!==undefined);
-    const disponibles = coloresComarcas.filter(c=>!usados.includes(c));
-    asignados[i] = disponibles[Math.floor(Math.random()*disponibles.length)] || coloresComarcas[0];
-    const poly = document.createElementNS("http://www.w3.org/2000/svg","polygon");
-    poly.setAttribute("points", comarca.puntos.map(p=>p.join(",")).join(" "));
-    poly.setAttribute("fill", asignados[i]);
-    poly.setAttribute("class","comarca");
-    comarcasLayer.appendChild(poly);
-  });
-}
-
-// --- Dibujar ciudades ---
-function dibujarCiudades(){
-  const posiciones = [];
-  ciudades.forEach(c=>{
-    let posX = c.x, posY = c.y;
-    let colision = true;
-    while(colision){
-      colision = false;
-      for(const p of posiciones){
-        if(Math.abs(p.x-posX)<50 && Math.abs(p.y-posY)<20){
-          posY += 15;
-          colision = true;
-          break;
-        }
-      }
-    }
-    posiciones.push({x:posX,y:posY});
-    const label = document.createElementNS("http://www.w3.org/2000/svg","text");
-    label.setAttribute("x", posX);
-    label.setAttribute("y", posY);
-    label.setAttribute("class","cityLabel");
-    label.textContent = c.nombre;
-    citiesLayer.appendChild(label);
-    // Dibujar punto
-    const circle = document.createElementNS("http://www.w3.org/2000/svg","circle");
-    circle.setAttribute("cx", c.x);
-    circle.setAttribute("cy", c.y);
-    circle.setAttribute("r", 5);
-    circle.setAttribute("fill","black");
-    citiesLayer.appendChild(circle);
-  });
-}
-
-// --- Ejecutar ---
-dibujarComarcas();
-dibujarCiudades();
-
+  loadData();
 </script>
-
 </body>
 </html>
