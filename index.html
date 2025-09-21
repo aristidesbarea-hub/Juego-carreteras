@@ -56,7 +56,10 @@
 
 <div id="sidebar">
   <h2>Juego de Carreteras</h2>
-  <button id="hintButton" style="width: 100%; padding: 6px; margin-bottom: 10px;">Mostrar Respuesta</button>
+  <div style="display: flex; align-items: center; margin-bottom: 10px;">
+    <button id="hintButton" style="padding: 6px;">Mostrar Respuesta</button>
+    <span id="hintText" style="margin-left: 10px; font-weight: bold; color: red;"></span>
+  </div>
   <div id="roadButtons"></div>
 </div>
 
@@ -87,6 +90,7 @@
   const citiesLayer = document.getElementById('citiesLayer');
   const roadButtonsDiv = document.getElementById('roadButtons');
   const hintButton = document.getElementById('hintButton');
+  const hintText = document.getElementById('hintText');
   
   const pastelColors = [
       '#FFB6C1', '#F08080', '#ADD8E6', '#87CEFA', '#B0C4DE',
@@ -245,24 +249,30 @@
       button.className = 'btnRoad';
       button.textContent = road.nombre;
       button.onclick = () => checkAnswer(road, button);
-
-      // --- CORRECCIÓN AÑADIDA AQUÍ ---
-      // Si la carretera ya fue respondida, le añadimos la clase 'correct' para que se mantenga verde
       if (answeredCorrect.has(road.nombre)) {
         button.classList.add('correct');
       }
-      // --- FIN DE LA CORRECCIÓN ---
-
       roadButtonsDiv.appendChild(button);
     });
+    // Limpiamos el texto de la pista cuando se actualizan los botones
+    hintText.textContent = '';
   }
 
   function giveHint() {
     if (!targetRoad) return;
-    const correctButton = Array.from(roadButtonsDiv.children).find(btn => btn.textContent === targetRoad.nombre);
-    if (correctButton) {
-        checkAnswer(targetRoad, correctButton);
-    }
+    hintText.textContent = targetRoad.nombre;
+    // La carretera se vuelve verde en el mapa, pero el botón no.
+    drawRoad(targetRoad, 'correct');
+    answeredCorrect.add(targetRoad.nombre);
+    
+    // Pasamos a la siguiente carretera después de un breve retraso
+    setTimeout(() => {
+        targetRoad = getRandomRoad();
+        if (targetRoad) {
+            updateButtons();
+            drawRoad(targetRoad, 'target');
+        }
+    }, 1500);
   }
 
   function drawRoad(road, cssClass) {
