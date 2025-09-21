@@ -1,0 +1,900 @@
+{
+  "ciudades": [
+    {
+      "nombre": "Solsona",
+      "x": 302.3138427734375,
+      "y": 292.8707580566406,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Barcelona",
+      "x": 483.1573486328125,
+      "y": 496.40411376953125,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Sant Feliu de Llobregat",
+      "x": 409.5231018066406,
+      "y": 483.8470764160156,
+      "width": 70,
+      "height": 19.108883319409586,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Vilanova i la Geltru",
+      "x": 373.1611633300781,
+      "y": 555.93896484375,
+      "width": 112.77360066833756,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Vilafranca del Penedès",
+      "x": 306.693115234375,
+      "y": 504.18804931640625,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Mataró",
+      "x": 539.5858764648438,
+      "y": 449.6397705078125,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Sabadell",
+      "x": 448.2770690917969,
+      "y": 437.5728759765625,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Terrassa",
+      "x": 393.11199951171875,
+      "y": 433.6041259765625,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Granollers",
+      "x": 476.3636779785156,
+      "y": 413.5425109863281,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Manresa",
+      "x": 370.41815185546875,
+      "y": 377.3367919921875,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Moià",
+      "x": 434.163818359375,
+      "y": 355.3053283691406,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Vic",
+      "x": 471.1797790527344,
+      "y": 318.37017822265625,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Santa Coloma de Farners",
+      "x": 543.2644653320312,
+      "y": 334.3261413574219,
+      "width": 80.6934001670844,
+      "height": 19.108883319409642,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "El Vendrell",
+      "x": 302.3074951171875,
+      "y": 538.9976196289062,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Tarragona",
+      "x": 259.18804931640625,
+      "y": 583.726806640625,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Reus",
+      "x": 203.0529022216797,
+      "y": 556.8462524414062,
+      "width": 61.08883319409637,
+      "height": 19.108883319409642,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Falset",
+      "x": 128.4532012939453,
+      "y": 560.60986328125,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Mora d'Ebre",
+      "x": 77.1314468383789,
+      "y": 589.8069458007812,
+      "width": 56.63324979114452,
+      "height": 31.584516847674763,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Gandesa",
+      "x": 16.888534545898438,
+      "y": 583.4909057617188,
+      "width": 59.30659983291564,
+      "height": 19.802283486494048,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Tortosa",
+      "x": 48.5028076171875,
+      "y": 658.5467529296875,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Amposta",
+      "x": 63.61408615112305,
+      "y": 691.9763793945312,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Valls",
+      "x": 250.6735076904297,
+      "y": 520.6217651367188,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Les Borges Blanques",
+      "x": 144.75535583496094,
+      "y": 464.796630859375,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Mollerusa",
+      "x": 143.4866485595703,
+      "y": 404.8223571777344,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Tàrrega",
+      "x": 198.5320587158203,
+      "y": 400.55999755859375,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Cervera",
+      "x": 250.012939453125,
+      "y": 394.03228759765625,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Lleida",
+      "x": 83.94916534423828,
+      "y": 405.4175720214844,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Balaguer",
+      "x": 134.244384765625,
+      "y": 353.9605407714844,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Tremp",
+      "x": 134.90969848632812,
+      "y": 239.21852111816406,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "El Pont de Suert",
+      "x": 61.36739730834961,
+      "y": 167.67782592773438,
+      "width": 98.51573377889169,
+      "height": 17.3266499582289,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Vielha",
+      "x": 138.96975708007812,
+      "y": 63.096954345703125,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Sort",
+      "x": 210.63937377929688,
+      "y": 165.1912841796875,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "La Seu d'Urgell",
+      "x": 264.44842529296875,
+      "y": 185.16798400878906,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Puigcerdà",
+      "x": 375.430419921875,
+      "y": 157.25843811035156,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Ripoll",
+      "x": 460.129150390625,
+      "y": 231.97946166992188,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Berga",
+      "x": 377.6390075683594,
+      "y": 261.079345703125,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Prats del Lluçanès",
+      "x": 419.5662536621094,
+      "y": 284.83251953125,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Olot",
+      "x": 528.799560546875,
+      "y": 236.9763641357422,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Banyoles",
+      "x": 588.9340209960938,
+      "y": 260.60711669921875,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Girona",
+      "x": 594.9122924804688,
+      "y": 303.6864929199219,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "La Bisbal d'Empordà",
+      "x": 644.7901611328125,
+      "y": 303.6079406738281,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Figueres",
+      "x": 643.3085327148438,
+      "y": 210.2229461669922,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Igualada",
+      "x": 321.1206359863281,
+      "y": 423.40106201171875,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Montblanc",
+      "x": 247.90017700195312,
+      "y": 486.7168273925781,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Guissona",
+      "x": 250.1392059326172,
+      "y": 356.95281982421875,
+      "width": 70,
+      "height": 20,
+      "tipo": "capital"
+    },
+    {
+      "nombre": "Calaf",
+      "x": 299.7099914550781,
+      "y": 378.085205078125,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Cradona",
+      "x": 327.9091491699219,
+      "y": 321.0736999511719,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Navàs",
+      "x": 382.5955810546875,
+      "y": 324.29815673828125,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Sallent",
+      "x": 379.62908935546875,
+      "y": 353.0366516113281,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Sant Sadurní d'Anoia",
+      "x": 336.5389099121094,
+      "y": 475.5887145996094,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Martorell",
+      "x": 399.7847595214844,
+      "y": 460.49835205078125,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Sitges",
+      "x": 382.24188232421875,
+      "y": 541.0527954101562,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Sant Boi de Llobregat",
+      "x": 398.47967529296875,
+      "y": 518.4891967773438,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Badalona",
+      "x": 492.8566589355469,
+      "y": 478.43682861328125,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Premià de Mar",
+      "x": 529.0453491210938,
+      "y": 463.6196594238281,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Arenys de Mar",
+      "x": 571.1835327148438,
+      "y": 436.96002197265625,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Calella",
+      "x": 587.1063842773438,
+      "y": 424.6145324707031,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Blanes",
+      "x": 613.7659912109375,
+      "y": 410.5735778808594,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Lloret de Mar",
+      "x": 638.5330200195312,
+      "y": 398.4036560058594,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Sant Feliu de Guíxols",
+      "x": 683.3629760742188,
+      "y": 380.59893798828125,
+      "width": 97.62461709830131,
+      "height": 17.32664995822887,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Palamós",
+      "x": 694.2865600585938,
+      "y": 355.41741943359375,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Palafrugell",
+      "x": 710.5611572265625,
+      "y": 330.29559326171875,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Torroella de Montgrí",
+      "x": 703.9098510742188,
+      "y": 291.57464599609375,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Llagostera",
+      "x": 624.0611572265625,
+      "y": 347.44549560546875,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "l'Escala",
+      "x": 694.251220703125,
+      "y": 261.60595703125,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Roses",
+      "x": 693.4911499023438,
+      "y": 230.3502197265625,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Cadaqués",
+      "x": 736.2841186523438,
+      "y": 213.01742553710938,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "la Jonquera",
+      "x": 596.4812622070312,
+      "y": 166.12759399414062,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Portbou",
+      "x": 699.3540649414062,
+      "y": 166.72238159179688,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Besalú",
+      "x": 580.396240234375,
+      "y": 233.7693328857422,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Manlleu",
+      "x": 498.08111572265625,
+      "y": 298.5468444824219,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Torelló",
+      "x": 485.28338623046875,
+      "y": 278.5965576171875,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Ribes de Freser",
+      "x": 457.6253356933594,
+      "y": 190.05307006835938,
+      "width": 56.63324979114452,
+      "height": 24.455583402951845,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Camprodon",
+      "x": 512.129638671875,
+      "y": 196.5614471435547,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Bellver de Cerdanya",
+      "x": 342.5091247558594,
+      "y": 195.2447967529297,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Bagà",
+      "x": 384.1056823730469,
+      "y": 214.85629272460938,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Sant Llorenç de Morunys",
+      "x": 317.18389892578125,
+      "y": 246.4821014404297,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Organyà",
+      "x": 255.0448760986328,
+      "y": 222.6774139404297,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Oliana",
+      "x": 253.65789794921875,
+      "y": 270.6387634277344,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Ponts",
+      "x": 224.27073669433594,
+      "y": 316.53961181640625,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Artesa de Segre",
+      "x": 179.42921447753906,
+      "y": 317.01287841796875,
+      "width": 58.415483152325265,
+      "height": 27.128933444722918,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Àger",
+      "x": 116.0042953491211,
+      "y": 288.8659362792969,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Isona",
+      "x": 199.38980102539062,
+      "y": 253.41098022460938,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "la Pobla de Segur",
+      "x": 166.3054962158203,
+      "y": 212.3151397705078,
+      "width": 44.15761626287943,
+      "height": 23.56446672236146,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Esterri d'Àneu",
+      "x": 221.89797973632812,
+      "y": 91.63912963867188,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Llívia",
+      "x": 429.1307067871094,
+      "y": 153.60397338867188,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Alfarràs",
+      "x": 56.04206466674805,
+      "y": 346.3028564453125,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Alcarràs",
+      "x": 41.06659698486328,
+      "y": 436.4287414550781,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Juneda",
+      "x": 139.11293029785156,
+      "y": 430.10418701171875,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Agramunt",
+      "x": 196.81097412109375,
+      "y": 357.8084411621094,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Prades",
+      "x": 207.65444946289062,
+      "y": 507.78118896484375,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "la Granadella",
+      "x": 109.81157684326172,
+      "y": 492.6067199707031,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Maials",
+      "x": 44.534488677978516,
+      "y": 491.64044189453125,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Flix",
+      "x": 67.78944396972656,
+      "y": 526.6303100585938,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Horta de Sant Joan",
+      "x": -6.492098808288574,
+      "y": 613.127685546875,
+      "width": 56.63324979114452,
+      "height": 26.237816764132617,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "l'Ametlla de Mar",
+      "x": 160.8890380859375,
+      "y": 649.9760131835938,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Deltebre",
+      "x": 118.77859497070312,
+      "y": 690.6181640625,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "la Ràpita",
+      "x": 93.3933334350586,
+      "y": 732.1390991210938,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Alcanar",
+      "x": 26.110715866088867,
+      "y": 756.0833740234375,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "la Senia",
+      "x": 18.70035743713379,
+      "y": 717.2091064453125,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Santa Coloma de Queralt",
+      "x": 263.5124816894531,
+      "y": 433.88116455078125,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Centelles",
+      "x": 473.2933044433594,
+      "y": 359.5133361816406,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "la Garriga",
+      "x": 482.971923828125,
+      "y": 392.175537109375,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Sant Celoni",
+      "x": 553.8231201171875,
+      "y": 396.05517578125,
+      "width": 46.830966304650474,
+      "height": 36.04010025062655,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Hostalric",
+      "x": 572.0642700195312,
+      "y": 372.9183044433594,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Anglès",
+      "x": 559.0206298828125,
+      "y": 308.2414245605469,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "l'Hospitalet de Llobregat",
+      "x": 465.759033203125,
+      "y": 513.5758666992188,
+      "width": 112.77360066833751,
+      "height": 18.217766638819285,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Calafell",
+      "x": 323.6894226074219,
+      "y": 559.33984375,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Torredembarra",
+      "x": 300.04791259765625,
+      "y": 570.1084594726562,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Salou",
+      "x": 213.41615295410156,
+      "y": 595.543701171875,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Cambrils",
+      "x": 181.30078125,
+      "y": 600.9607543945312,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    },
+    {
+      "nombre": "Vandellòs",
+      "x": 118.69764709472656,
+      "y": 598.995361328125,
+      "width": 70,
+      "height": 20,
+      "tipo": "normal"
+    }
+  ]
+}
